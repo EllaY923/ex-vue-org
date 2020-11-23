@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app3">
+        <span v-if="seen">Now you see me</span>
+        <span v-if="none">No Message</span>
+      </div>
+   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+   <script>
+       var app3 = new Vue({
+            el: '#app3',
+            data: {
+                seen: true,
+                none: false
+            }
+        })
+   </script>
+</body>
+</html>

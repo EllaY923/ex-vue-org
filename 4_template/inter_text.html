@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+       <span>메시지: {{ msg }}</span>
+    </div>
+    <div id="app2">
+        <span v-once>다시는 변경하지 않습니다: {{ msg }}</span>
+     </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+         var vm = new Vue({
+            el:'#app',
+            data: {
+                msg: 'Hello Vue!'  
+            }
+        })
+        var vm1 = new Vue({
+            el:'#app2',
+            data: {
+                msg: '안녕하세요 Vue!'  
+            }
+        })
+
+        vm.msg = 'Hi Vue!'
+        vm1.msg = 'Hi Vue!'
+    </script>
+ 
+    </script>
+</body>
+</html>
