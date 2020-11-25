@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active { color: rgb(0, 17, 255); }
+        .text-danger { color: #f00; }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div v-bind:class="[activeClass, errorClass]">Hello APP</div>
+    </div>
+    <div id="app2">
+        <div v-bind:class="[isActive ? active : '', errorClass]">Hello APP2</div>
+        <div v-bind:class="[{active: isActive}, errorClass]">Hello APP2-1</div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                activeClass: 'active',
+                errorClass: 'text-danger',
+            },
+        })
+        var vm2 = new Vue({
+            el: '#app2',
+            data: {
+                isActive: true,
+                errorClass: 'text-danger',
+            },
+        })
+    </script>
+</body>
+</html>

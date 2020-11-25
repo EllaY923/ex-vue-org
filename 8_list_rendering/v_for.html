@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        input,label { display: block; }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="item in items">
+              {{ item.message }}
+            </li>
+        </ul>
+    </div>
+    <div id="app2">
+        <ul>
+            <li v-for="(item, index) in items">
+                {{ parentMessage }} - {{index}} - {{ item.message }}
+            </li>
+        </ul>
+    </div>
+    <div id="app3">
+        <ul>
+            <li v-for="(item, index) of items">
+                {{ parentMessage }} - {{index}} - {{ item.message }}
+            </li>
+        </ul>
+    </div>
+    <script>
+        var items = [
+                { message: 'Foo' },
+                { message: 'Bar' }
+            ]
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                items: items
+            },
+        })
+        var vm2 = new Vue({
+            el: '#app2',
+            data: {
+                parentMessage: 'Parent',
+                items: items
+            },
+        })
+        var vm3 = new Vue({
+            el: '#app3',
+            data: {
+                parentMessage: 'Parent',
+                items: items
+            },
+        })
+    </script>
+</body>
+</html>

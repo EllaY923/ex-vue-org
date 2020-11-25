@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active { color: rgb(0, 17, 255); }
+        .text-danger { color: #f00; }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div v-bind:class="{ active: isActive }">Hello App1</div>
+        <div v-bind:class="{ active: !isActive }">Hello App1</div>
+    </div>
+    <div id="app1">
+        <div
+            class="static"
+            v-bind:class="{ active: isActive, 'text-danger': hasError }"
+        > Hello App1 </div>
+        <div
+            class="static"
+            v-bind:class="{ active: isActive, 'text-danger': !hasError }"
+        > Hello App1 </div>
+    </div>
+    <div id="app2">
+        <div v-bind:class="classObject">Hello App2</div>
+    </div>
+    <div id="app3">
+        <div v-bind:class="classObject">Hello App3</div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                isActive: true,
+            },
+        })
+
+        var vm_class = new Vue({
+            el: '#app1',
+            data: {
+                isActive: true,
+                hasError: false,
+            }
+        })
+        var vm_no_inline = new Vue({
+            el: '#app2',
+            data: {
+                classObject: {
+                    active: true,
+                    'text-danger': false,
+                }
+            }
+        })
+        var vm_pattern = new Vue({
+            el: '#app3',
+            data: {
+                isActive: true,
+                error: null,
+                //error: {type: "fatal"},
+            },
+            computed: {
+                classObject : function(){
+                    return {
+                        active: this.isActive && !this.error,
+                        'text-danger': this.error && this.error.type === 'fatal' 
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1 v-if="awesome">Vue is awesome!</h1>
+        <h1 v-else>Oh no 😢</h1>
+    </div>
+    <div id="app2">
+        <template v-if="ok">
+            <h1>Title</h1>
+            <p>Paragraph 1</p>
+            <p>Paragraph 2</p>
+        </template>
+    </div>
+    <div id="app3">
+        <div v-if="Math.random() > 0.5">
+            이제 나를 볼 수 있어요
+        </div>
+        <div v-else>
+            이제는 안보입니다
+        </div>
+    </div>
+    <div id="app4">
+        <div v-if="type === 'A'">
+            A
+        </div>
+        <div v-else-if="type === 'B'">
+            B
+        </div>
+        <div v-else-if="type === 'C'">
+            C
+        </div>
+        <div v-else>
+            Not A/B/C
+        </div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                awesome: true
+            }
+        })
+        var vm_template = new Vue({
+            el: '#app2',
+            data: {
+                ok: true
+            }
+        })
+        var vm_else = new Vue({
+            el: '#app3',
+        })
+
+        var vm_else_if = new Vue({
+            el: '#app4',
+            data: {
+                type: "C"
+            }
+        })
+    </script>
+</body>
+</html>

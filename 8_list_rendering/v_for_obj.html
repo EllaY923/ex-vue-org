@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        input,label { display: block; }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="value in object">
+              {{ value }}
+            </li>
+        </ul>
+    </div>
+    <div id="app2">
+        <ul>
+            <li v-for="(value, name) in object">
+                {{ name }}: {{ value }}
+            </li>
+        </ul>
+    </div>
+    <div id="app3">
+        <ul>
+            <li v-for="(value, name, index) in object">
+                {{ index }}. {{ name }}: {{ value }}
+            </li>
+        </ul>
+    </div>
+    <script>
+        var object ={
+                title: 'How to do lists in Vue',
+                author: 'Jane Doe',
+                publishedAt: '2016-04-10'
+            }
+        var vm = new Vue({
+            el: '#app',
+            data: {object}
+        })
+        var vm2 = new Vue({
+            el: '#app2',
+            data: {object}
+        })
+        var vm3 = new Vue({
+            el: '#app3',
+            data: {object}
+        })
+    </script>
+</body>
+</html>
