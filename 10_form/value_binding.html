@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input
+            type="checkbox"
+            v-model="toggle"
+            true-value="yes"
+            false-value="no"
+        />
+    </div>
+    <br/>
+    <div id="app2">
+        <input type="radio" v-model="pick" v-bind:value="a"/>
+    </div>
+    <br/>
+    <div id="app3">
+        <select v-model="selected">
+        <!-- inline object literal -->
+        <option v-bind:value="{ number: 123 }">123</option>
+        </select>
+    </div>
+    <br/>
+
+    <br/>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                toggle: ''
+            }
+        })
+        // 체크된 경우
+        vm.toggle === 'yes'
+        // 체크 되지 않은 경우
+        vm.toggle === 'no'
+
+        var vm2 = new Vue({
+            el: '#app2',
+            data: {
+                pick: ''
+            }
+        })
+        // 체크 하면:
+        vm.pick === vm.a
+
+        var vm3 = new Vue({
+            el: '#app3',
+            data: {
+                selected: ''
+            }
+        })
+        // 선택 하면:
+        typeof vm.selected // -> 'object'
+        vm.selected.number // -> 123
+    </script>
+</body>
+</html>

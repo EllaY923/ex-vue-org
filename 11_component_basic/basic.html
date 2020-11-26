@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input v-model="message" placeholder="여기를 수정해보세요">
+        <p>메시지: {{ message }}</p>
+    </div>
+    <br/>
+    <div id="app2">
+        <span>여러 줄을 가지는 메시지:</span>
+        <p style="white-space: pre-line">{{ message }}</p>
+        <br>
+        <textarea v-model="message" placeholder="여러줄을 입력해보세요"></textarea>
+    </div>
+    <br/>
+    <div id="app3">
+        <input type="checkbox" id="checkbox" v-model="checked">
+        <label for="checkbox">{{ checked }}</label>
+    </div>
+    <br/>
+    <div id="app4">
+        <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+        <label for="jack">Jack</label>
+        <input type="checkbox" id="john" value="John" v-model="checkedNames">
+        <label for="john">John</label>
+        <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+        <label for="mike">Mike</label>
+        <br>
+        <span>체크한 이름: {{ checkedNames }}</span>
+    </div>
+    <br/>
+    <div id="app5">
+        <input type="radio" id="one" value="One" v-model="picked">
+        <label for="one">One</label>
+        <br>
+        <input type="radio" id="two" value="Two" v-model="picked">
+        <label for="two">Two</label>
+        <br>
+        <span>선택: {{ picked }}</span>
+    </div>
+    <br/>
+    <div id="app6">
+        <select v-model="selected">
+            <option disabled value="">Please select one</option>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+        <span>선택함: {{ selected }}</span>
+        <br/>
+        <select v-model="selected_muti" multiple>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+          </select>
+          <br>
+          <span>Selected: {{ selected_muti }}</span>
+    </div>
+    <br/>
+    <div id="app7">
+        <select v-model="selected">
+            <option v-for="option in options" v-bind:value="option.value">
+              {{ option.text }}
+            </option>
+        </select>
+        <span>Selected: {{ selected }}</span>
+    </div>
+    <br/>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message: ""
+            }
+        })
+
+        var vm2 = new Vue({
+            el: '#app2',
+            data: {
+                message: ""
+            }
+        })
+        var vm3 = new Vue({
+            el: '#app3',
+            data: {
+                checked: false
+            }
+        })
+        var vm4 = new Vue({
+            el: '#app4',
+            data: {
+                checkedNames: []
+            }
+        })
+        var vm5 = new Vue({
+            el: '#app5',
+            data: {
+                picked: ''
+            }
+        })
+        var vm6 = new Vue({
+            el: '#app6',
+            data: {
+                selected: '',
+                selected_muti: '',
+
+            }
+        })
+        var vm7 = new Vue({
+            el: '#app7',
+            data: {
+                selected: 'A',
+                options: [
+                { text: 'One', value: 'A' },
+                { text: 'Two', value: 'B' },
+                { text: 'Three', value: 'C' }
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

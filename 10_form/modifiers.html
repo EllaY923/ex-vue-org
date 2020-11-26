@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <template>
+            <label for="basic">basic</label>
+            <input type="text" id="basic" v-model="basic">
+        </template>
+        <template>
+            <label for="lazy">lazy</label>
+            <input type="text" id="lazy" v-model.lazy="lazy">
+        </template>
+        <p>basic: {{ basic }}</p>
+        <p>lazy: {{ lazy }}</p>
+    </div>
+    <br/>
+    <div id="app2">
+        <template>
+            <label for="num_basic">basic</label>
+            <input id="num_basic" v-model="basic">
+        </template>
+        <template>
+            <label for="number">number</label>
+            <input id="number" v-model.number="number">
+        </template>
+        <p>basicType: {{ typeof(basic) }}</p>
+        <p>numberType: {{ typeof(number) }}</p>
+    </div>
+    <div id="app3">
+        <template>
+            <label for="trim_basic">basic</label>
+            <input id="trim_basic" v-model="basic">
+        </template>
+        <template>
+            <label for="trim">trim</label>
+            <input id="trim" v-model.trim="trim">
+        </template>
+        <p>basic: {{ basic.length }}</p>
+        <p>trim: {{ trim.length }}</p>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                basic: '',
+                lazy: '',
+            }
+        })
+        var vm2 = new Vue({
+            el: '#app2',
+            data: {
+                basic: '',
+                number: '',
+            }
+        })
+        var vm3 = new Vue({
+            el: '#app3',
+            data: {
+                basic: '',
+                trim: '',
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        input,label { display: block; }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="item in items" :key="item.id">
+              {{ item.message }}
+            </li>
+        </ul>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                items: [
+                { id: 1, message: 'Foo' },
+                { id: 2, message: 'Bar' }
+            ]},
+        })
+    </script>
+</body>
+</html>

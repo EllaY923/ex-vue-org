@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        input,label { display: block; }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="todo in todos" v-if="!todo.isComplete">
+                {{ todo }}
+            </li>
+        </ul>
+    </div>
+    <div id="app2">
+        <ul v-if="todos.length">
+            <li v-for="todo in todos">
+              {{ todo }}
+            </li>
+        </ul>
+        <p v-else>No todos left!</p>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                todos: [
+                { id: 1, msg: 'Foo', isComplete: true },
+                { id: 2, msg: 'Bar', isComplete: false }
+            ]}
+        })
+        var vm2 = new Vue({
+            el: '#app2',
+            data: {
+                todos: [
+                { id: 1, msg: 'Foo', isComplete: true },
+                { id: 2, msg: 'Bar', isComplete: false }
+            ]}
+        })
+    </script>
+</body>
+</html>

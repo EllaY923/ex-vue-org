@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        input,label { display: block; }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="counter += 1">Add 1</button>
+        <p>위 버튼을 클릭한 횟수는 {{ counter }} 번 입니다.</p>
+    </div>
+    <br/>
+    <div id="app2">
+        <!-- `greet`는 메소드 이름으로 아래에 정의되어 있습니다 -->
+        <button v-on:click="greet">Greet</button>
+    </div>
+    <br/>
+    <div id="app3">
+        <button v-on:click="say('hi')">Say hi</button>
+        <button v-on:click="say('what')">Say what</button>
+    </div>
+    <br/>
+    <div id="app4">
+        <button v-on:click="warn('Form cannot be submitted yet.', $event)">
+            Submit
+        </button>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                counter: 0
+            }
+        })
+
+        var vm2 = new Vue({
+            el: '#app2',
+            data: {
+                name: 'Vue.js'
+            },
+            // 메소드는 `methods` 객체 안에 정의합니다
+            methods: {
+                greet: function (event) {
+                    // 메소드 안에서 사용하는 `this` 는 Vue 인스턴스를 가리킵니다
+                    alert('Hello ' + this.name + '!')
+                    // `event` 는 네이티브 DOM 이벤트입니다
+                    if (event) {
+                        alert(event.target.tagName)
+                    }
+                }
+            }
+        })
+        var vm3 = new Vue({
+            el: '#app3',
+            methods: {
+                say: function (message) {
+                alert(message)
+                }
+            }
+        })
+
+        var vm4 = new Vue({
+            el: '#app4',
+            methods: {
+                warn: function (message, event) {
+                    // 이제 네이티브 이벤트에 액세스 할 수 있습니다
+                    if (event) event.preventDefault()
+                    alert(message)
+                }
+            }
+        })
+    </script>
+</body>
+</html>
