@@ -6,13 +6,29 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="app1">
+        <p>{{ a }}</p>
+        <p>{{ b }}</p>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
         var data  = {a: 1}
 
         var vm = new Vue({
+            el: '#app1',
             data: data    
         })
+        
+        console.log(vm.a === data.a)
+
+        vm.a = 2
+        console.log ("ex2 / "+ data.a)
+        
+        data.a = 3
+        console.log("ex3 / " +vm.a)
+        
+        // data에 초기화 되어있지 않은 값은 값이 갱신되어도 화면이 바뀌지 않는다.
+        vm.b = 11
     </script>
 </body>
 </html>

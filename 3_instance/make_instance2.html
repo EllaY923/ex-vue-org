@@ -7,21 +7,17 @@
 </head>
 <body>
     <div id="app">
-        <p>{{ foo }}</p>
-        <button v-on:click="foo = 'baz'">Change it</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
-        var obj = {
-            foo: 'bar'
-        }
-        
-        Object.freeze(obj)
-        
+        let data = { a: 'nene' }
         let vm = new Vue({
             el: '#app',
-            data: obj
+            data: data
         })
+        
+        console.log( vm.$data === data )
+        console.log( vm.$el === document.getElementById('app') )
     </script>
 </body>
 </html>

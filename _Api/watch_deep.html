@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch Deep 예제</title>
+</head>
+<body>
+    <!-- https://blog.woolta.com/categories/10/posts/196 예시 참조 -->
+    <div id="parents" >
+        <button v-on:click="increase">숫자 증가</button>
+        <watch-deep v-bind:parent-data="data"></watch-deep>
+        <watch-not-deep v-bind:parent-data="data"></watch-not-deep>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        let Deep = {
+            template: '<div><span>Deep 적용:  카운트 {{ parentData.count }}</span></div>',
+            props: {
+                parentData: {
+                    type: Object,
+                }
+            },
+            watch: {
+                parentData :{
+                    deep: true,
+                    handler(newData){
+                        console.log(`Deep before data ${oldData.count}`)
+                    }
+                }
+            }
+        }
+        let NotDeep = {
+            template: '<div><span>Deep 적용 안함: 카운트 {{ parentData.count }}</span></div>',
+            props: {
+                parentData: {
+                    type: Object,
+                }
+            },
+            watch: {
+                parentData (newData){
+                    console.log(`Not Deep data change ${newData.count}`)
+                }
+            }
+        }
+        let vm = new Vue({
+            name: 'Parents',
+            components: {
+                'watch-deep': Deep,
+                'watch-not-deep': NotDeep,
+            },
+            el: '#parents',
+            data(){
+                return{
+                    data: {
+                        count: 0
+                    }
+                }
+            },
+            methods: {
+                increase(){
+                    this.data.count = this.data.count + 1 
+                }
+            }
+        })
+    </script>
+</body>
+</html>
